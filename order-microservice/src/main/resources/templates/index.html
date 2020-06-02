@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Zamówienia</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3>Zamówienia</h3>
+
+<table>
+   <tr>
+      <th>ID zamówienia</th>
+      <th>ID klienta</th>
+      <th>ID produktu</th>
+      <th>Ilość</th>
+   </tr>
+   <tbody>
+   <tr th:each="order: ${orders}">
+      <td th:text="${order.id}">0</td>
+      <td th:text="${order.customer.firstName +' '+order.customer.lastName }">-</td>
+      <td th:text="${order.product.name}">-</td>
+      <td th:text="${order.count}">-</td>
+   </tr>
+   </tbody>
+</table>
+<a href="/addOrder">Utwórz zamówienie</a>
+</body>
+</html>

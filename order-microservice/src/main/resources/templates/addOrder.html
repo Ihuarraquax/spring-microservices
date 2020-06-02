@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Dodaj zamówienie</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h3>Dodaj zamówienie</h3>
+
+<form method="post" action="addOrder">
+   <label for="customerSelect">Klient</label>
+   <select name="customerId" id="customerSelect">
+      <option th:each="customer: ${customers}" th:text="${customer.firstName +' '+customer.lastName}" th:value="${customer.id}">0</option>
+   </select><br>
+   <label for="productSelect">Produkt</label>
+   <select name="productId" id="productSelect">
+      <option th:each="p: ${products}" th:text="${p.name}" th:value="${p.id}"></option>
+   </select><br>
+   <label for="count">Ilość</label><input type="text" id="count" name="count" value="0" /><br>
+   <input type="submit" value="Dodaj" />
+</form>
+
+</body>
+</html>
