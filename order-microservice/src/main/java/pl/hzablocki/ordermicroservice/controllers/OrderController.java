@@ -2,6 +2,11 @@ package pl.hzablocki.ordermicroservice.controllers;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Application;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -32,6 +37,10 @@ public class OrderController {
     int id = 1;
     private final RestTemplate halRestTemplate;
     private final RestTemplate restTemplate;
+
+    @Qualifier("eurekaClient")
+    @Autowired
+    private EurekaClient eurekaClient;
 
     public OrderController() {
         orders = new ArrayList<>();
@@ -65,22 +74,42 @@ public class OrderController {
     }
 
     private Product fetchProduct(int productId) {
-        Product product = restTemplate.getForObject("http://localhost:8081/products/" + productId, Product.class);
+        Application application
+                = eurekaClient.getApplication("product-microservice");
+        InstanceInfo instanceInfo = application.getInstances().get(0);
+        String hostname = instanceInfo.getHostName();
+        int port = instanceInfo.getPort();
+        Product product = restTemplate.getForObject("http://"+hostname+":"+port+"/products/" + productId, Product.class);
         return product;
     }
 
     private Customer fetchCustomer(int customerId) {
-        ResponseEntity<EntityModel<Customer>> responseEntity = halRestTemplate.exchange("http://localhost:8082/customers/" + customerId, HttpMethod.GET, null, new ParameterizedTypeReference<EntityModel<Customer>>() {});
+        Application application
+                = eurekaClient.getApplication("customer-microservice");
+        InstanceInfo instanceInfo = application.getInstances().get(0);
+        String hostname = instanceInfo.getHostName();
+        int port = instanceInfo.getPort();
+        ResponseEntity<EntityModel<Customer>> responseEntity = halRestTemplate.exchange("http://"+hostname+":"+port+"/customers/" + customerId, HttpMethod.GET, null, new ParameterizedTypeReference<EntityModel<Customer>>() {});
         EntityModel<Customer> resource = responseEntity.getBody();
         return resource.getContent();
     }
 
     private List<Product> fetchProducts() {
-        return restTemplate.getForObject("http://localhost:8081/", List.class);
+        Application application
+                = eurekaClient.getApplication("product-microservice");
+        InstanceInfo instanceInfo = application.getInstances().get(0);
+        String hostname = instanceInfo.getHostName();
+        int port = instanceInfo.getPort();
+        return restTemplate.getForObject("http://"+hostname+":"+port+"/", List.class);
     }
 
     private List<Product> fetchCustomers() {
-        ResponseEntity<CollectionModel<Customer>> responseEntity = halRestTemplate.exchange("http://localhost:8082/customers", HttpMethod.GET, null, new ParameterizedTypeReference<CollectionModel<Customer>>() {
+        Application application
+                = eurekaClient.getApplication("customer-microservice");
+        InstanceInfo instanceInfo = application.getInstances().get(0);
+        String hostname = instanceInfo.getHostName();
+        int port = instanceInfo.getPort();
+        ResponseEntity<CollectionModel<Customer>> responseEntity = halRestTemplate.exchange("http://"+hostname+":"+port+"/customers", HttpMethod.GET, null, new ParameterizedTypeReference<CollectionModel<Customer>>() {
         });
         CollectionModel<Customer> resources = responseEntity.getBody();
         return new ArrayList(resources.getContent());
