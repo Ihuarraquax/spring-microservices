@@ -9,7 +9,7 @@ public class Order {
     private int productId;
     private int count;
 
-    public Order(int id,int customerId, int productId, int count){
+    public Order(int id, int customerId, int productId, int count) {
         this.id = id;
         this.customerId = customerId;
         this.productId = productId;

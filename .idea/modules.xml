@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/auth/auth.iml" filepath="$PROJECT_DIR$/auth/auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer-webservice/customer-webservice.iml" filepath="$PROJECT_DIR$/customer-webservice/customer-webservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-microservice/order-microservice.iml" filepath="$PROJECT_DIR$/order-microservice/order-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-microservice/product-microservice.iml" filepath="$PROJECT_DIR$/product-microservice/product-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spring-microservices.iml" filepath="$PROJECT_DIR$/.idea/spring-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/warehouse-react/warehouse-react.iml" filepath="$PROJECT_DIR$/warehouse-react/warehouse-react.iml" />
+    </modules>
+  </component>
+</project>

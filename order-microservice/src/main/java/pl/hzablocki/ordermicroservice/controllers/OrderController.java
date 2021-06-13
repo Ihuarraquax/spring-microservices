@@ -47,6 +47,7 @@ public class OrderController {
         halRestTemplate = halRestTemplate();
         restTemplate = new RestTemplate();
     }
+
     @GetMapping
     String index(Model model) {
         List<OrderModel> orderModels = orders.stream().map(o ->
@@ -68,7 +69,7 @@ public class OrderController {
 
     @PostMapping("/addOrder")
     public String addOrder(@RequestParam(name = "productId") String productId, @RequestParam(name = "customerId") String customerId, @RequestParam(name = "count") Integer count) {
-        Order order = new Order(id++,Integer.parseInt(customerId),Integer.parseInt(productId),count);
+        Order order = new Order(id++, Integer.parseInt(customerId), Integer.parseInt(productId), count);
         orders.add(order);
         return "redirect:/";
     }
@@ -79,7 +80,7 @@ public class OrderController {
         InstanceInfo instanceInfo = application.getInstances().get(0);
         String hostname = instanceInfo.getHostName();
         int port = instanceInfo.getPort();
-        Product product = restTemplate.getForObject("http://"+hostname+":"+port+"/products/" + productId, Product.class);
+        Product product = restTemplate.getForObject("http://" + hostname + ":" + port + "/products/" + productId, Product.class);
         return product;
     }
 
@@ -89,7 +90,8 @@ public class OrderController {
         InstanceInfo instanceInfo = application.getInstances().get(0);
         String hostname = instanceInfo.getHostName();
         int port = instanceInfo.getPort();
-        ResponseEntity<EntityModel<Customer>> responseEntity = halRestTemplate.exchange("http://"+hostname+":"+port+"/customers/" + customerId, HttpMethod.GET, null, new ParameterizedTypeReference<EntityModel<Customer>>() {});
+        ResponseEntity<EntityModel<Customer>> responseEntity = halRestTemplate.exchange("http://" + hostname + ":" + port + "/customers/" + customerId, HttpMethod.GET, null, new ParameterizedTypeReference<EntityModel<Customer>>() {
+        });
         EntityModel<Customer> resource = responseEntity.getBody();
         return resource.getContent();
     }
@@ -100,7 +102,7 @@ public class OrderController {
         InstanceInfo instanceInfo = application.getInstances().get(0);
         String hostname = instanceInfo.getHostName();
         int port = instanceInfo.getPort();
-        return restTemplate.getForObject("http://"+hostname+":"+port+"/", List.class);
+        return restTemplate.getForObject("http://" + hostname + ":" + port + "/", List.class);
     }
 
     private List<Product> fetchCustomers() {
@@ -109,7 +111,7 @@ public class OrderController {
         InstanceInfo instanceInfo = application.getInstances().get(0);
         String hostname = instanceInfo.getHostName();
         int port = instanceInfo.getPort();
-        ResponseEntity<CollectionModel<Customer>> responseEntity = halRestTemplate.exchange("http://"+hostname+":"+port+"/customers", HttpMethod.GET, null, new ParameterizedTypeReference<CollectionModel<Customer>>() {
+        ResponseEntity<CollectionModel<Customer>> responseEntity = halRestTemplate.exchange("http://" + hostname + ":" + port + "/customers", HttpMethod.GET, null, new ParameterizedTypeReference<CollectionModel<Customer>>() {
         });
         CollectionModel<Customer> resources = responseEntity.getBody();
         return new ArrayList(resources.getContent());
