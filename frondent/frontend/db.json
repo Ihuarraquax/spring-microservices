@@ -1,0 +1,177 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "gameName": "Wiedźmin III: Dziki Gon",
+      "company": "CD PROJEKT RED",
+      "platform": "Xbox One",
+      "releaseYear": "2015",
+      "distribution": "Tradycyjna",
+      "description": "Wiedźmin 3: Dziki Gon to trzecia i najbardziej rozchwytywana gra serii. Produkcja ponownie przenosi graczy do fantastycznego świata stworzonego przez Andrzeja Sapkowskiego. Poznajemy kontynuację historii Geralta z Rivii, który ponownie musi chwycić za miecz. W trakcie rozgrywki poszukujemy utraconej miłości Geralta, zajmujemy się inwazją Nilfgaardu na Królestwa Północy i mamy wiele innych, poważnych, wiedźmińskich obowiązków. Zanurz się w świat pełen magii i potworów! ",
+      "genre": "Akcja, Przygodowe, RPG",
+      "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+      "count": "300",
+      "price": "189.99"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "abc",
+      "email": "ccc",
+      "password": "abc"
+    },
+    {
+      "name": "Maciej Zakrzewski",
+      "email": "mz80347@stud.uph.edu.pl",
+      "password": "leomesi2",
+      "id": 2
+    },
+    {
+      "name": "Maciej Zakrzewski",
+      "email": "mz80347@stud.uph.edu.pl",
+      "password": "1234",
+      "id": 3
+    }
+  ],
+  "orders": [
+    {
+      "cartItems": [
+        {
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Maciej Zakrzewski",
+        "address": "sjdjdsjdjs",
+        "city": "sdsdds",
+        "postalCode": "dsdsdssd",
+        "country": "Polska"
+      },
+      "paymentMethod": "PayPal",
+      "itemsPrice": 189.99,
+      "shippingPrice": 0,
+      "taxPrice": 28.5,
+      "totalPrice": 218.49,
+      "orderItems": [
+        {
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "cartItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Maciej Zakrzewski",
+        "address": "sjdjdsjdjs",
+        "city": "sdsdds",
+        "postalCode": "dsdsdssd",
+        "country": "Polska"
+      },
+      "paymentMethod": "PayPal",
+      "itemsPrice": 189.99,
+      "shippingPrice": 0,
+      "taxPrice": 28.5,
+      "totalPrice": 218.49,
+      "orderItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "id": 2
+    },
+    {
+      "cartItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Maciej Zakrzewski",
+        "address": "sjdjdsjdjs",
+        "city": "sdsdds",
+        "postalCode": "dsdsdssd",
+        "country": "Polska"
+      },
+      "paymentMethod": "PayPal",
+      "itemsPrice": 189.99,
+      "shippingPrice": 0,
+      "taxPrice": 28.5,
+      "totalPrice": 218.49,
+      "orderItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "cartItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Maciej Zakrzewski",
+        "address": "sjdjdsjdjs",
+        "city": "sdsdds",
+        "postalCode": "dsdsdssd",
+        "country": "Polska"
+      },
+      "paymentMethod": "PayPal",
+      "itemsPrice": 189.99,
+      "shippingPrice": 0,
+      "taxPrice": 28.5,
+      "totalPrice": 218.49,
+      "orderItems": [
+        {
+          "product": 1,
+          "gameName": "Wiedźmin III: Dziki Gon",
+          "imageSrc": "https://static.muve.pl/uploads/product-cover/0021/9696/wiedzmin3-digi-3.jpg",
+          "price": "189.99",
+          "count": "300",
+          "qty": 1
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
