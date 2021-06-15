@@ -15,15 +15,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import pl.hzablocki.ordermicroservice.model.Customer;
 import pl.hzablocki.ordermicroservice.model.Order;
-import pl.hzablocki.ordermicroservice.model.OrderModel;
 import pl.hzablocki.ordermicroservice.model.Product;
 
 import java.util.ArrayList;
@@ -31,7 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class OrderController {
     List<Order> orders;
     int id = 1;
@@ -48,30 +44,51 @@ public class OrderController {
         restTemplate = new RestTemplate();
     }
 
-    @GetMapping
-    String index(Model model) {
-        List<OrderModel> orderModels = orders.stream().map(o ->
-                new OrderModel(o.getId(),
-                        fetchCustomer(o.getCustomerId()),
-                        fetchProduct(o.getProductId()),
-                        o.getCount()
-                )).collect(Collectors.toList());
-        model.addAttribute("orders", orderModels);
-        return "index";
-    }
+//    @GetMapping
+//    String index(Model model) {
+////        List<OrderModel> orderModels = orders.stream().map(o ->
+////                new OrderModel(o.getId(),
+////                        fetchCustomer(o.getCustomerId()),
+////                        fetchProduct(o.getProductId()),
+////                        o.getCount()
+////                )).collect(Collectors.toList());
+////        model.addAttribute("orders", orderModels);
+//        return "index";
+//    }
 
-    @GetMapping(path = "addOrder")
-    String addOrder(Model model) {
-        model.addAttribute("products", fetchProducts());
-        model.addAttribute("customers", fetchCustomers());
-        return "addOrder";
-    }
+//    @GetMapping(path = "addOrder")
+//    String addOrder(Model model) {
+//        model.addAttribute("products", fetchProducts());
+//        model.addAttribute("customers", fetchCustomers());
+//        return "addOrder";
+//    }
 
-    @PostMapping("/addOrder")
-    public String addOrder(@RequestParam(name = "productId") String productId, @RequestParam(name = "customerId") String customerId, @RequestParam(name = "count") Integer count) {
-        Order order = new Order(id++, Integer.parseInt(customerId), Integer.parseInt(productId), count);
+//    @PostMapping("/addOrder")
+//    public String addOrder(@RequestParam(name = "productId") String productId, @RequestParam(name = "customerId") String customerId, @RequestParam(name = "count") Integer count) {
+////        Order order = new Order(id++, Integer.parseInt(customerId), Integer.parseInt(productId), count);
+////        orders.add(order);
+//        return "redirect:/";
+//    }
+
+    @PostMapping()
+    public String addOrder2(@RequestBody OrderRequest request) {
+        Order order = new Order();
+        order.setId(++id);
+        order.setCustomerId(++id);
+        order.setItemsPrice(request.itemsPrice);
+        order.setPaymentMethod(request.paymentMethod);
+        order.setTotalPrice(request.totalPrice);
+        order.setShippingAddress(request.shippingAddress);
+        order.setTaxPrice(request.taxPrice);
+        order.setShippingPrice(request.shippingPrice);
+        order.setProducts(request.cartItems);
         orders.add(order);
         return "redirect:/";
+    }
+
+    @GetMapping()
+    public List<Order> getallOrders(OrderRequest request) {
+        return orders;
     }
 
     private Product fetchProduct(int productId) {

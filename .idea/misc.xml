@@ -6,12 +6,11 @@
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/order-microservice/pom.xml" />
-        <option value="$PROJECT_DIR$/customer-webservice/pom.xml" />
         <option value="$PROJECT_DIR$/product-microservice/pom.xml" />
         <option value="$PROJECT_DIR$/customer-webservice/.mvn/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/auth/pom.xml" />
         <option value="$PROJECT_DIR$/warehouse-react/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka/pom.xml" />
       </list>
     </option>
   </component>

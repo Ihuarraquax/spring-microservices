@@ -10,8 +10,6 @@
         <module name="config-server" />
         <module name="product-microservice" />
         <module name="order-microservice" />
-        <module name="customer-webservice" />
-        <module name="auth" />
         <module name="eureka" />
         <module name="warehouse-react" />
       </profile>
